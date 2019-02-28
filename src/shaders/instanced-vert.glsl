@@ -106,16 +106,19 @@ float fbm3D(float x, float y, float z, float height, float xScale, float yScale,
   return height * total;
 }
 
-const vec4 lightPos = vec4(5, 5, 3, 1); //The position of our virtual light, which is used to compute the shading of
+const vec4 lightPos = vec4(50, 10, 50, 1); //The position of our virtual light, which is used to compute the shading of
 
 
 void main()
 {
     fs_Col = vs_Col;
     fs_Pos = vs_Pos;
-    fs_Nor = vs_Nor;
 
     mat4 transformation = mat4(vs_Transform1, vs_Transform2, vs_Transform3, vs_Transform4);
+
+    mat3 normalTransform = inverse(transpose(mat3(transformation)));
+    fs_Nor = vec4(normalTransform * vec3(vs_Nor), 0.0);
+
 
     float windOffset = u_Wind * fbm3D(fs_Pos.x, fs_Pos.y, fs_Pos.z, 7.0 * (sin(u_Time / 15.0) * cos(u_Time / 20.0 + 3.0)), 100000.0, 100.0, 100000.0);
 
