@@ -78,7 +78,7 @@ The tree that I created is an instance of my L-system class, where I set all of 
 
 ![](middleAgeNew.png)
 <p align="center">
-  7 expansion iterations, 0.9 age
+  9 expansion iterations, 0.6 age
 </p>
 
 ![](flowerless.png)
