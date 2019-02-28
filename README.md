@@ -1,8 +1,8 @@
 # Grace Gilbert (gracegi): L-system Jacaranda Tree
 
-![](tree2.png)
+![](youngTreeBright.png)
 
-![](tree1.png)
+![](middleAge.png)
 
 ## Demo Link
 https://gracelgilbert.github.io/hw04-l-systems/
@@ -11,8 +11,6 @@ https://gracelgilbert.github.io/hw04-l-systems/
 I was inspired by the Jacaranda tree, a tree that grows in southern Africa, as well as Central and South America.
 
 ![](gweru_jacaranda.jpg)
-
-![](jacaranda-trees-in-full-splendour-with-blossom-in-the-trees-and-on-AJ73GK.jpg)
 
 There are two main elements that I particularly liked about these trees. The first is their bright purple flowers, distinguishing them from typical green trees. The second is their curved, winding branches. I tried to incorporate these elements into my L-system.
 
