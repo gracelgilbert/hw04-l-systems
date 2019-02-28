@@ -1,8 +1,6 @@
 # Grace Gilbert (gracegi): L-system Jacaranda Tree
 
-![](youngTreeBright.png)
-
-![](middleAge.png)
+![](finalCoverTree.png)
 
 ## Demo Link
 https://gracelgilbert.github.io/hw04-l-systems/
@@ -55,6 +53,38 @@ The tree that I created is an instance of my L-system class, where I set all of 
 - The user can modify how many times the initial axiom is expanded. More expansions causes more branching.
 - The user can modify the age of the tree within a range from 0 to 1. The younger the tree, the brighter the flower color is, and the flowers are more dense. As the age value changes, I interpolated between a varied bright purple color and a varied brown color so that the flowers brown linearly with age. 
 - Within the vertex shader, I animate the tree using a value generated with 3-dimensional FBM. The wind goes left and right along the x axis along a sinusoidal animation curve. The intensity of the wind is scaled along y so that the lower portion of the tree doesn't move at all, and it gradually becomes more prominant further up the tree.  The user can adjust the speed of this wind.
+
+### Example Modifications
+
+![](finalCoverTree.png)
+<p align="center">
+  9 expansion iterations, 0.1 age
+</p>
+
+![](DyingFull.png)
+<p align="center">
+  10 expansion iterations, 0.8 age
+</p>
+
+![](DyingTall.png)
+<p align="center">
+  9 expansion iterations, 0.9 age
+</p>
+
+![](DyingShort.png)
+<p align="center">
+  7 expansion iterations, 0.9 age
+</p>
+
+![](middleAgeNew.png)
+<p align="center">
+  7 expansion iterations, 0.9 age
+</p>
+
+![](flowerless.png)
+<p align="center">
+  9 expansion iterations, 1 age (no flowers)
+</p>
 
 ### Geometry
 I modeled the branch segment and flower in Maya and exported them as obj files.
