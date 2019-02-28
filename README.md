@@ -48,60 +48,20 @@ The tree that I created is an instance of my L-system class, where I set all of 
 - 1, 2, 3, 4, 5, and 6 all map to rotation functions. These functions rotate the current turtle about one of its three axes, up, forward, and right. For each direction, there is a positive rotation and a negative rotation. The amount of rotation is randomized by adding a random value between 0 and 5 to a rotation of about 70 degrees. These rotation functions cause the branches to branch out in different directions, growing the tree in all different directions. The amount in which the branches rotate is scaled by the depth.  The branches rotate less as the depth increases, causing wider spread initially, but straighter branching as the branches become thinner.
 - r maps to a randomized rotation function. This function rotates the turtle in a completely random direction by a small amount. This function is called in before and/or after many of the F's in the string, causing twisting and winding as the branches extend. The turtle has a boolean value that keeps track of whether it is part of the main trunk of the tree. If the current turtle is part of the chunk, the random rotation is scaled down to avoid having an unrealistically winding trunk.
 - [ and ] map to save and restore functions respectively. The save function pushes a copy of the current turtle onto the turtle stack so it can be returned to later, and the restore function sets the current turtle to the turtle that was popped off the stack, going back to a previous state to branch off of it.
-- p maps to a function that places flowers. Within this function, there is a chance that no flowers will be placed. If the depth of the current turtle is less than 10, no flowers will be placed, preventing flowers from being placed low down when the tree is not expanded many iterations.
+- p maps to a function that places flowers. Within this function, there is a chance that no flowers will be placed. If the depth of the current turtle is less than 10, no flowers will be placed, preventing flowers from being placed low down when the tree is not expanded many iterations. If the depth is larger than 10, there is then a probability of a flower being drawn. This probability depends on the age of the tree. The younger the tree, the higher the probability of placing a flower, and vice versa, making the tree "shed" its flowers as it ages. If, given the probability, a flower is to be drawn, I then generate a random integer between 1 and 3 and draw that many flowers, each with a random offset rotation from the orientation of the turtle, creating little clusters of flowers. 
 - X maps to an empty function that is a placeholder, as X's main purpose is to expand the string.
 
-### Visual features
+### Modifiability
+- The user can modify how many times the initial axiom is expanded. More expansions causes more branching.
+- The user can modify the age of the tree within a range from 0 to 1. The younger the tree, the brighter the flower color is, and the flowers are more dense. As the age value changes, I interpolated between a varied bright purple color and a varied brown color so that the flowers brown linearly with age. 
+- Within the vertex shader, I animate the tree using a value generated with 3-dimensional FBM. The wind goes left and right along the x axis along a sinusoidal animation curve. The intensity of the wind is scaled along y so that the lower portion of the tree doesn't move at all, and it gradually becomes more prominant further up the tree.  The user can adjust the speed of this wind.
 
+### Geometry
+I modeled the branch segment and flower in Maya and exported them as obj files.
 
+### Background
+The background consists of a gradiant of sunset colors that are offset with FBM noise to create a clouded blending. This is done in screenspace.
 
-
-
-Example of a basic Turtle class in TypeScript (Turtle.ts)
-```
-import {vec3} from 'gl-matrix';
-
-export default class Turtle {
-  constructor(pos: vec3, orient: vec3) {
-    this.position = pos;
-    this.orientation = orient;
-  }
-
-  moveForward() {
-    add(this.position, this.position, this.orientation * 10.0);
-  }
-}
-```
-Example of a hash map in TypeScript:
-```
-let expansionRules : Map<string, string> = new Map();
-expansionRules.set('A', 'AB');
-expansionRules.set('B', 'A');
-
-console.log(expansionRules.get('A')); // Will print out 'AB'
-console.log(expansionRules.get('C')); // Will print out 'undefined'
-```
-Using functions as map values in TypeScript:
-```
-function moveForward() {...}
-function rotateLeft() {...}
-let drawRules : Map<string, any> = new Map();
-drawRules.set('F', moveForward);
-drawRules.set('+', rotateLeft);
-
-let func = drawRules.get('F');
-if(func) { // Check that the map contains a value for this key
-  func();
-}
-```
-Note that in the above case, the code assumes that all functions stored in the `drawRules` map take in no arguments. If you want to store a class's functions as values in a map, you'll have to refer to a specific instance of a class, e.g.
-```
-let myTurtle: Turtle = new Turtle();
-let drawRules: Map<string, any> = new Map();
-drawRules.set('F', myTurtle.moveForward.bind(myTurtle));
-let func = drawRules.get('F');
-if(func) { // Check that the map contains a value for this key
-  func();
-}
-```
-
+## Things to Improve
+- Occasionally, a tree will generate that is just a stump with no branches, or just a couple branches. I think this is due to the fact that I kill branches if they get too low so they don't go through the ground, but sometimes it kills branches prematurely. A potential solution to this would be to only kill these branches if the turtle is pointing downward. Another possibility would be to bias the branches to point upwards rather than killing them at all.
+- Right now, the wind affects the entire tree mostly evenly. The FBM creates a slight variation, but this variation is not dependent on the geometry at all. Something that could make the wind more dynamic would be to have an instanced wind value, so each branch for example could have its own wind based on say thickness, height, and position. The flowers could also have different wind values, making them flutter faster than the branches for example
