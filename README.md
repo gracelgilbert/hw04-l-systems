@@ -7,10 +7,19 @@
 ## Demo Link
 https://gracelgilbert.github.io/hw04-l-systems/
 
-
 ## Inspiration
+I was inspired by the Jacaranda tree, a tree that grows in southern Africa, as well as Central and South America.
+
+![](gweru_jacaranda.jpg)
+
+![](jacaranda-trees-in-full-splendour-with-blossom-in-the-trees-and-on-AJ73GK.jpg)
+
+There are two main elements that I particularly liked about these trees. The first is their bright purple flowers, distinguishing them from typical green trees. The second is their curved, winding branches. I tried to incorporate these elements into my L-system.
 
 ## Resources
+- I looked at the CIS 460 slides, along with CIS 566 lecture slides, for examples of grammars.
+- I looked at the webgl obj loader documentation to load obj files: https://github.com/frenchtoast747/webgl-obj-loader
+- I used this 2D L-system generator to experiment with ideas for my grammar: http://www.kevs3d.co.uk/dev/lsystems/
 
 ## Implementation
 Example of a basic Turtle class in TypeScript (Turtle.ts)
