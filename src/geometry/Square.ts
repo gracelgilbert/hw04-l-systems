@@ -41,6 +41,9 @@ class Square extends Drawable {
     this.colors = colors;
     this.offsets = offsets;
 
+    //// MY CODE
+    
+
     gl.bindBuffer(gl.ARRAY_BUFFER, this.bufCol);
     gl.bufferData(gl.ARRAY_BUFFER, this.colors, gl.STATIC_DRAW);
     gl.bindBuffer(gl.ARRAY_BUFFER, this.bufTranslate);
