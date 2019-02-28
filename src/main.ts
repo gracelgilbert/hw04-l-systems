@@ -121,8 +121,8 @@ function loadScene(expansion: number, age: number) {
   let flowerCol3sArray = [];
   let flowerCol4sArray = [];
 
-  let color0 = vec3.fromValues(0.8, 0.5, 1.0);
-  let color1 = vec3.fromValues(0.5, 0.4, 0.1);
+  let color0 = vec3.fromValues(0.65, 0.3, 0.8);
+  let color1 = vec3.fromValues(0.5, 0.4, 0.4);
 
   color0 = vec3.multiply(color0, vec3.fromValues(1 - age, 1 - age, 1 - age), color0);
   color1 = vec3.multiply(color1, vec3.fromValues(age, age, age), color1);
