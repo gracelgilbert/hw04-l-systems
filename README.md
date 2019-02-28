@@ -33,8 +33,15 @@ The L-system is made up of various compnents:
 The tree that I created is an instance of my L-system class, where I set all of the elements to produce my particular tree.
 #### Expansion Rules
 - Axiom: "FFFFX"
-- X maps to "[2FFFFrXp]Fr[1FFFFrXp]FFFFXp" with probability 0.34, "[3FFFFrXp]Fr[4FFFFrXp]FFFFXp" with probability 0.34, "[5FFFFrXp]Fr[6FFFFrXp]FFFFXp" with probability 0.3, and "Fp" with probability 0.02
-- F maps to "F" with probability 0.75, "FF" with probability 0.05, and "FFF" with probability 0.2
+- X maps to: 
+  -- "[2FFFFrXp]Fr[1FFFFrXp]FFFFXp" with probability 0.34,
+  -- "[3FFFFrXp]Fr[4FFFFrXp]FFFFXp" with probability 0.34,
+  -- "[5FFFFrXp]Fr[6FFFFrXp]FFFFXp" with probability 0.3, and 
+  -- "Fp" with probability 0.02.
+- F maps to: 
+  -- "F" with probability 0.75,
+  -- "FF" with probability 0.05, and 
+  -- "FFF" with probability 0.2.
 - The remaining characters, [, ], 1, 2, 3, 4, 5, 6, r, and p all map to themselves with probability 1.0
 #### Drawing Rules
 
